@@ -149,6 +149,34 @@ public class ModelBuilder<T extends ModelBuilder<T>> extends ModelFile {
     }
 
     /**
+     * Set the particle texture for a given dictionary key.
+     *
+     * @param texture the texture, can be another key e.g. {@code "#all"}
+     * @return this builder
+     * @throws NullPointerException  if {@code texture} is {@code null}
+     * @throws IllegalStateException if {@code texture} is not a key (does not start
+     *                               with {@code '#'}) and does not exist in any
+     *                               known resource pack
+     */
+    public T particle(String texture) {
+        return texture("particle", texture);
+    }
+
+    /**
+     * Set the particle texture for a given dictionary key.
+     *
+     * @param texture the texture
+     * @return this builder
+     * @throws NullPointerException  if {@code texture} is {@code null}
+     * @throws IllegalStateException if {@code texture} is not a key (does not start
+     *                               with {@code '#'}) and does not exist in any
+     *                               known resource pack
+     */
+    public T particle(ResourceLocation texture) {
+        return texture("particle", texture);
+    }
+
+    /**
      * Set the render type for this model.
      *
      * @param renderType the render type. Must be registered via
